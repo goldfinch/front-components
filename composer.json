@@ -1,0 +1,12 @@
+{
+    "name": "goldfinch/front-components",
+    "description": "",
+    "license": "MIT",
+    "authors": [{
+        "name": "Artem Karasev"
+    }],
+    "require": {},
+    "autoload": {},
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
