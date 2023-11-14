@@ -1,0 +1,135 @@
+// ------------------------------------------------------------------ Animations
+@mixin popInAnimation {
+  animation-name: pop-in;
+  animation-duration: 400ms;
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0);
+  }
+  66% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@mixin popOutAnimation {
+  animation-name: pop-out;
+  animation-duration: 0.4s;
+}
+
+@keyframes pop-out {
+  0% {
+    transform: scale(1);
+  }
+  33% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@mixin animation($animate...) {
+  $max: length($animate);
+  $animations: '';
+  @for $i from 1 through $max {
+    $animations: #{$animations + nth($animate, $i)};
+    @if $i < $max {
+      $animations: #{$animations + ', '};
+    }
+  }
+  -webkit-animation: $animations;
+  -moz-animation: $animations;
+  -o-animation: $animations;
+  animation: $animations;
+}
+
+@mixin animationName($animationName) {
+  -webkit-animation-name: $animationName;
+  animation-name: $animationName;
+} // string
+@mixin animationDuration($animationDuration) {
+  -webkit-animation-duration: $animationDuration;
+  animation-duration: $animationDuration;
+} // num in ms or s
+@mixin animationDirection($animationDirection) {
+  -webkit-animation-direction: $animationDirection;
+  animation-direction: $animationDirection;
+} // 'normal', 'reverse', 'alternate', 'alternate-reverse'
+@mixin animationDelay($animationDelay) {
+  -webkit-animation-delay: $animationDelay;
+  animation-delay: $animationDelay;
+}
+@mixin animationIterationCount($animationIterationCount) {
+  -webkit-animation-iteration-count: $animationIterationCount;
+  animation-iteration-count: $animationIterationCount;
+} // num or 'infinite'
+@mixin animationTimingFunction($animationTimingFunction) {
+  -webkit-animation-timing-function: $animationTimingFunction;
+  animation-timing-function: $animationTimingFunction;
+} // bezier curve or 'linear'
+@mixin animationFillMode($animationFillMode) {
+  -webkit-animation-fill-mode: $animationFillMode;
+  animation-fill-mode: $animationFillMode;
+} // forwards or backwards or both
+
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+@include keyframes(buttonBounce) {
+  0% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  4.7% {
+    transform: matrix3d(1.45, 0, 0, 0, 0, 1.45, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  9.41% {
+    transform: matrix3d(1.883, 0, 0, 0, 0, 1.883, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  14.11% {
+    transform: matrix3d(2.141, 0, 0, 0, 0, 2.141, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  18.72% {
+    transform: matrix3d(2.212, 0, 0, 0, 0, 2.212, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  24.32% {
+    transform: matrix3d(2.151, 0, 0, 0, 0, 2.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  29.93% {
+    transform: matrix3d(2.048, 0, 0, 0, 0, 2.048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  35.54% {
+    transform: matrix3d(1.979, 0, 0, 0, 0, 1.979, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  41.04% {
+    transform: matrix3d(1.961, 0, 0, 0, 0, 1.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  52.15% {
+    transform: matrix3d(1.991, 0, 0, 0, 0, 1.991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  63.26% {
+    transform: matrix3d(2.007, 0, 0, 0, 0, 2.007, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  85.49% {
+    transform: matrix3d(1.999, 0, 0, 0, 0, 1.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  100% {
+    transform: matrix3d(2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+}

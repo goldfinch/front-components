@@ -1,0 +1,637 @@
+/* Microsoft Internet Explorer */
+@mixin only-ie {
+  @media all and (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+/* Microsoft Edge Browser 12-18 (All versions before Chromium) */
+@mixin only-edge {
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
+}
+
+/* Microsoft Edge Browser 12-18 (All versions before Chromium) */
+@mixin only-firefox {
+  @supports (-moz-appearance: none) {
+    @content;
+  }
+  //
+  //@-moz-document url-prefix() {
+  //  @content;
+  //}
+}
+
+// IE11
+@mixin ie11 {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}
+
+// IE11 and Edge
+@mixin ie11andedge {
+  @media screen and (-webkit-min-device-pixel-ratio: 0) and (-ms-high-contrast: none),
+    (-ms-high-contrast: active) {
+    @content;
+  }
+}
+
+// Firefox
+@mixin firefox {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+
+//! UNTESTED
+
+// Firefox
+@mixin firefox {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+
+// Chrome
+@mixin firefox {
+  @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    @content;
+  }
+}
+
+// Safari
+@mixin safari {
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) {
+      @content;
+    }
+  }
+}
+
+@mixin chromium {
+  @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    @content;
+  }
+}
+
+// safari only
+@mixin apply-to-safari-only($selector) {
+  // safari 7.1+
+  _::-webkit-full-page-media,
+  _:future,
+  :root #{$selector} {
+    @content;
+  }
+
+  // safari 9+
+  @supports (overflow: -webkit-marquee) and (justify-content: inherit) {
+    #{$selector} {
+      @content;
+    }
+  }
+}
+@mixin Safari9 {
+  @supports (overflow: -webkit-marquee) and (justify-content: inherit) {
+    @content;
+  }
+}
+@mixin safari {
+  @media (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+      @content;
+    }
+  }
+}
+
+@mixin edge {
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
+}
+
+@mixin ie {
+  _:-ms-fullscreen {
+    @content;
+  }
+
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}
+// IE11 only
+@mixin apply-to-ie11-only($selector) {
+  @media all and (-ms-high-contrast: none) {
+    *::-ms-backdrop,
+    #{$selector} {
+      @content;
+    }
+  }
+}
+
+// Firefox only
+@mixin apply-to-firefox-only($selector) {
+  @-moz-document url-prefix() {
+    #{$selector} {
+      @content;
+    }
+  }
+}
+
+@mixin Edge {
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
+}
+
+@mixin Safari7Plus($item) {
+  _::-webkit-full-page-media,
+  _:future,
+  :root #{$item} {
+    @content;
+  }
+}
+
+@mixin Safari9Plus($item) {
+  _:default:not(:root:root),
+  #{$item} {
+    @content;
+  }
+}
+
+@mixin IE10and11 {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+@mixin iOSonly {
+  @supports (-webkit-overflow-scrolling: touch) {
+    @content;
+  }
+}
+
+@mixin everythingExceptIOS {
+  @supports not (-webkit-overflow-scrolling: touch) {
+    @content;
+  }
+}
+
+@mixin FireFox {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+
+@mixin Edge {
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
+}
+
+@mixin Safari9 {
+  @supports (overflow: -webkit-marquee) and (justify-content: inherit) {
+    @content;
+  }
+}
+
+@mixin Safari7Plus($item) {
+  _::-webkit-full-page-media,
+  _:future,
+  :root #{$item} {
+    @content;
+  }
+}
+
+@mixin Safari9Plus($item) {
+  _:default:not(:root:root),
+  #{$item} {
+    @content;
+  }
+}
+
+@mixin IE10and11 {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+@mixin iOSonly {
+  @supports (-webkit-overflow-scrolling: touch) {
+    @content;
+  }
+}
+
+@mixin everythingExceptIOS {
+  @supports not (-webkit-overflow-scrolling: touch) {
+    @content;
+  }
+}
+
+@mixin FireFox {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+
+@mixin Edge {
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
+}
+
+@mixin Safari9 {
+  @supports (overflow: -webkit-marquee) and (justify-content: inherit) {
+    @content;
+  }
+}
+
+@mixin Safari7Plus($item) {
+  _::-webkit-full-page-media,
+  _:future,
+  :root #{$item} {
+    @content;
+  }
+}
+
+@mixin Safari9Plus($item) {
+  _:default:not(:root:root),
+  #{$item} {
+    @content;
+  }
+}
+
+@mixin IE10and11 {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+@mixin iOSonly {
+  @supports (-webkit-overflow-scrolling: touch) {
+    @content;
+  }
+}
+
+@mixin everythingExceptIOS {
+  @supports not (-webkit-overflow-scrolling: touch) {
+    @content;
+  }
+}
+
+@mixin FireFox {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+
+@mixin Edge {
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
+}
+
+@mixin Safari9 {
+  @supports (overflow: -webkit-marquee) and (justify-content: inherit) {
+    @content;
+  }
+}
+
+@mixin Safari7Plus($item) {
+  _::-webkit-full-page-media,
+  _:future,
+  :root #{$item} {
+    @content;
+  }
+}
+
+@mixin Safari9Plus($item) {
+  _:default:not(:root:root),
+  #{$item} {
+    @content;
+  }
+}
+
+@mixin IE10and11 {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+@mixin iOSonly {
+  @supports (-webkit-overflow-scrolling: touch) {
+    @content;
+  }
+}
+
+@mixin everythingExceptIOS {
+  @supports not (-webkit-overflow-scrolling: touch) {
+    @content;
+  }
+}
+
+/* -------------------------------
+ *  hack
+ * ---------------------------- */
+@mixin hack-ie11 {
+  @media all and (-ms-high-contrast: none) {
+    *::-ms-backdrop,
+    body {
+      @content;
+    }
+  }
+}
+@mixin hack-edge {
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
+}
+@mixin hack-firefox {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+@mixin hack-chrome {
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    @content;
+  }
+}
+@mixin hack-safari($selecter: '*.hack-safari') {
+  _::-webkit-full-page-media,
+  _:future,
+  :root #{$selecter} {
+    @content;
+  }
+}
+
+@mixin FireFox {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+
+@mixin Edge {
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
+}
+
+@mixin Safari9 {
+  @supports (overflow: -webkit-marquee) and (justify-content: inherit) {
+    @content;
+  }
+}
+
+@mixin Safari7Plus($item) {
+  _::-webkit-full-page-media,
+  _:future,
+  :root #{$item} {
+    @content;
+  }
+}
+
+@mixin Safari9Plus($item) {
+  _:default:not(:root:root),
+  #{$item} {
+    @content;
+  }
+}
+
+@mixin IE10and11 {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+@mixin iOSonly {
+  @supports (-webkit-overflow-scrolling: touch) {
+    @content;
+  }
+}
+
+@mixin everythingExceptIOS {
+  @supports not (-webkit-overflow-scrolling: touch) {
+    @content;
+  }
+}
+
+@mixin landscape {
+  @media screen and (orientation: landscape) {
+    @content;
+  }
+}
+
+// IE11 & Edge Mixins
+// ==========================================================================
+
+// IE11
+@mixin ie11 {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}
+
+// IE11 and Edge
+@mixin ie11andedge {
+  @media screen and (-webkit-min-device-pixel-ratio: 0) and (-ms-high-contrast: none),
+    (-ms-high-contrast: active) {
+    @content;
+  }
+}
+
+// Firefox
+@mixin firefox {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+
+//! UNTESTED
+
+// Firefox
+@mixin firefox {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+
+// Chrome
+@mixin firefox {
+  @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    @content;
+  }
+}
+
+// Safari
+@mixin safari {
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) {
+      @content;
+    }
+  }
+}
+
+@mixin FireFox {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+
+@mixin Edge {
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
+}
+
+@mixin Safari9 {
+  @supports (overflow: -webkit-marquee) and (justify-content: inherit) {
+    @content;
+  }
+}
+
+@mixin Safari7Plus($item) {
+  _::-webkit-full-page-media,
+  _:future,
+  :root #{$item} {
+    @content;
+  }
+}
+
+@mixin Safari9Plus($item) {
+  _:default:not(:root:root),
+  #{$item} {
+    @content;
+  }
+}
+
+@mixin IE10and11 {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+@mixin iOSonly {
+  @supports (-webkit-overflow-scrolling: touch) {
+    @content;
+  }
+}
+
+@mixin everythingExceptIOS {
+  @supports not (-webkit-overflow-scrolling: touch) {
+    @content;
+  }
+}
+
+@mixin isIE() {
+  @media all and (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+@mixin isEdge() {
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
+}
+
+@mixin isFirefox() {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+
+@mixin isSafari() {
+  @media screen and (min-color-index: 0) and (-webkit-min-device-pixel-ratio: 0) {
+    @content;
+  }
+}
+
+@mixin isRetina() {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    @content;
+  }
+}
+
+@mixin FireFox {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+
+@mixin Edge {
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
+}
+
+@mixin Safari9 {
+  @supports (overflow: -webkit-marquee) and (justify-content: inherit) {
+    @content;
+  }
+}
+
+@mixin Safari7Plus($item) {
+  _::-webkit-full-page-media,
+  _:future,
+  :root #{$item} {
+    @content;
+  }
+}
+
+@mixin Safari9Plus($item) {
+  _:default:not(:root:root),
+  #{$item} {
+    @content;
+  }
+}
+
+@mixin IE10and11 {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+@mixin iOSonly {
+  @supports (-webkit-overflow-scrolling: touch) {
+    @content;
+  }
+}
+
+@mixin everythingExceptIOS {
+  @supports not (-webkit-overflow-scrolling: touch) {
+    @content;
+  }
+}
+
+@mixin ie-only() {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}
+
+@mixin ios-safari-only() {
+  @supports (-webkit-overflow-scrolling: touch) {
+    @content;
+  }
+}
+
+@mixin firefox-only() {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+
+// Source: https://goo.gl/7JooX0
+@mixin only-firefox {
+  @-moz-document url-prefix() {
+    @content; // << Firefox-only code passed in here.
+  }
+}
+
+// Source: https://goo.gl/V7Dc5z
+@mixin only-ie10-plus {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content; // << IE10+-only code passed in here.
+  }
+}

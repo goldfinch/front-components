@@ -1,0 +1,49 @@
+// Scrolls fix
+@mixin scroll-disappear {
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+
+  scrollbar-width: none;
+  scrollbar-color: transparetn;
+
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-track {
+    -webkit-appearance: none;
+    display: none;
+
+    width: 0;
+    height: 0;
+  }
+}
+
+@mixin scroll-behavior {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+@mixin scroll-style(
+  $size,
+  $foreground-color,
+  $background-color: mix($foreground-color, white, 50%)
+) {
+  // For Google Chrome
+  ::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
