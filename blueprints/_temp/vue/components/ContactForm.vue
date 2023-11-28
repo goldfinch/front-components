@@ -14,7 +14,7 @@ const formMessage = ref(null);
 
 const { submitHandler } = useFormHandler({
   action: 'contact',
-  url: '/api/form/contact',
+  url: '/api/req/contact',
   ref: contactForm,
   id: formID,
   formSubmited: formSubmited,
@@ -101,7 +101,7 @@ const contactFormVisible = useElementVisibility(contactForm)
 
         <FormKit
         type="checkbox"
-        label="Don't miss out my deals and promotions, subscribe to my newsletter!"
+        label="Subscribe to newsletter"
         name="newsletter"
         :config="{
             classes: {

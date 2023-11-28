@@ -1,10 +1,5 @@
-npm install @formkit/vue@next
-npm i @vueuse/core
-npm install axios
-npm install vue-recaptcha-v3
-npm i @vitejs/plugin-vue
-npm install @formkit/addons
-npm i tom-select
+npm install bootstrap @formkit/vue@next @vueuse/core axios vue-recaptcha-v3 @vitejs/plugin-vue @formkit/addons
+tom-select
 
 vite.config.js
 ```
