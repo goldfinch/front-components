@@ -4,7 +4,7 @@ import useFormData from '../composables/useFormData'
 import { load } from 'recaptcha-v3'
 import axios from 'axios';
 import { reset } from '@formkit/core'
-import LenisPlugin from '../../plugins/lenis/lenis';
+// import LenisPlugin from '../../plugins/lenis/lenis';
 
 export default function useFormHandler(cfg) {
 
@@ -48,7 +48,7 @@ export default function useFormHandler(cfg) {
 
         await nextTick()
 
-        LenisPlugin.scrollTo('#contactFormMessage');
+        // LenisPlugin.scrollTo('#contactFormMessage');
 
       } else {
 

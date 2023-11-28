@@ -1,0 +1,21 @@
+// $select-padding-x: $input_padding_x;
+// $select-padding-y: $input_padding_y;
+// $select-padding-dropdown-item-x: $input-btn-padding-x;
+// $select-padding-dropdown-item-y: 10px; // $input-btn-padding-y;
+// $select-color-text: $input_color;
+
+// // $enable-shadows: false;
+// // $select-line-height: 0;
+
+// $select-font-size: $input_font_size;
+
+@import 'tom-select/src/scss/tom-select.bootstrap5';
+
+.disabled .ts-control {
+  opacity: 1;
+}
+
+// fix height issue on dropdown when active
+.input-hidden .ts-control > input {
+  position: relative;
+}
