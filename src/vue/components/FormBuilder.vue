@@ -14,7 +14,7 @@ const supplies = JSON.parse(props.supplies)
 </template>
 
 <style lang="sass">
-@import "../../../../../vendor/goldfinch/front-components/src/components/sass/vue/formkit"
-@import "../../../../../vendor/goldfinch/front-components/src/components/sass/vue/recaptcha"
-@import "../../../../../vendor/goldfinch/front-components/src/components/sass/vue/transition"
+@import "../../components/sass/vue/formkit"
+@import "../../components/sass/vue/recaptcha"
+@import "../../components/sass/vue/transition"
 </style>

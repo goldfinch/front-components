@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import useFormHandler from '../../../../../vendor/goldfinch/front-components/src/vue/composables/useFormHandler'
+import useFormHandler from './useFormHandler'
 import { useElementVisibility } from '@vueuse/core'
 
 const useFormBuilder = (props) => {
