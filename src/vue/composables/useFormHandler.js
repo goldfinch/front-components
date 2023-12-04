@@ -44,7 +44,11 @@ export default function useFormHandler(cfg) {
 
         cfg.formSubmited.value = true;
 
-        cfg.formMessage.value = response.data.message;
+        if (cfg.supplies.thankyou_page) {
+          window.location = '/thank-you/' + cfg.supplies.form.action;
+        } else {
+          cfg.formMessage.value = response.data.message;
+        }
 
         await nextTick()
 

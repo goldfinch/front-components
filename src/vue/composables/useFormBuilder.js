@@ -20,6 +20,7 @@ const useFormBuilder = (props) => {
     id: formId,
     formSubmited: formSubmited,
     formMessage: formMessage,
+    supplies: supplies,
   });
 
   // PageSpeed Insights
