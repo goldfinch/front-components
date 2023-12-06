@@ -111,3 +111,7 @@ const fieldHowOptions = props.supplies.parameters.how_options;
   </Transition>
 
 </template>
+
+<style lang="sass">
+@import "@goldfinch/components/sass/vue/formkit"
+</style>
