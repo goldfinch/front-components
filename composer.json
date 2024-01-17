@@ -1,10 +1,15 @@
 {
     "name": "goldfinch/front-components",
     "description": "",
+    "type": "library",
+    "keywords": [],
     "license": "MIT",
-    "authors": [{
-        "name": "Artem Karasev"
-    }],
+    "authors": [
+        {
+            "name": "Art Karasev",
+            "email": "art.karasev@proton.me"
+        }
+    ],
     "require": {},
     "autoload": {},
     "minimum-stability": "dev",
