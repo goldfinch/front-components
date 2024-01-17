@@ -2,9 +2,9 @@
 
 @mixin clearfix() {
   &::after {
-    content: '';
     display: table;
     clear: both;
+    content: '';
   }
 }
 
@@ -15,10 +15,11 @@
 }
 
 @mixin hover-focus {
-  &:focus {
+  @include hover {
     @content;
   }
-  @include hover {
+
+  &:focus {
     @content;
   }
 }
@@ -45,42 +46,47 @@
 /// Vertically centers the element inside of its first non-static parent,
 /// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
 @mixin vertical-center {
+  @include vendor-prefixes(transform, translateY(-50%));
+
   position: absolute;
   top: 50%;
-  @include vendor-prefixes(transform, translateY(-50%));
 }
 
 /// Horizontally centers the element inside of its first non-static parent,
 /// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
 @mixin horizontal-center {
+  @include vendor-prefixes(transform, translateX(-50%));
+
   position: absolute;
   left: 50%;
-  @include vendor-prefixes(transform, translateX(-50%));
 }
 
 /// Vertically centers the element inside of its first non-static parent,
 /// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
 @mixin vertical-center {
+  @include vendor-prefixes(transform, translateY(-50%));
+
   position: absolute;
   top: 50%;
-  @include vendor-prefixes(transform, translateY(-50%));
 }
 
 /// Horizontally centers the element inside of its first non-static parent,
 /// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
 @mixin horizontal-center {
+  @include vendor-prefixes(transform, translateX(-50%));
+
   position: absolute;
   left: 50%;
-  @include vendor-prefixes(transform, translateX(-50%));
 }
 
 /// Absolutely centers the element inside of its first non-static parent,
 /// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
 @mixin absolute-center {
+  @include vendor-prefixes(transform, translate(-50%, -50%));
+
   position: absolute;
   top: 50%;
   left: 50%;
-  @include vendor-prefixes(transform, translate(-50%, -50%));
 }
 
 // calculate padding from aspect ratio
@@ -89,9 +95,9 @@
 }
 
 @mixin hyphens() {
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
+  hyphens: auto;
+  hyphens: auto;
+  hyphens: auto;
   hyphens: auto;
 }
 
@@ -115,12 +121,12 @@
   $color-to: #ffffff,
   $gradient-type: 0
 ) {
-  background-image: -moz-linear-gradient(
+  background-image: linear-gradient(
     $direction,
     rgba($color-from, 0.6) 0%,
     rgba($color-to, 0) 100%
   );
-  background-image: -webkit-linear-gradient(
+  background-image: linear-gradient(
     $direction,
     rgba($color-from, 0.6) 0%,
     rgba($color-to, 0) 100%
@@ -133,11 +139,11 @@
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=#{$gradient-type}, StartColorStr=#{$color-from}, EndColorStr=#{$color-to});
 }
 @mixin ellipsis($display: inline-block) {
+  display: $display;
+  max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 100%;
-  display: $display;
 }
 @mixin object-fit-cover {
   object-fit: cover;
@@ -149,25 +155,30 @@
   $remValue: math.div($value, 16) + rem;
   @return $remValue;
 }
+
 // --------------------------------------------------------------------- Functions
 @function calculateWidthPercentage($width-section, $width-actual) {
   @return math.percentage(math.div($width-section, $width-actual));
 }
 
 @mixin placeholder {
-  &::-webkit-input-placeholder {
+  &::input-placeholder {
     @content;
   }
-  &:-moz-placeholder {
-    @content;
-  }
-  &::-moz-placeholder {
-    @content;
-  }
-  &:-ms-input-placeholder {
-    @content;
-  }
+
   &::placeholder {
+    @content;
+  }
+
+  &::placeholder {
+    @content;
+  }
+
+  &:placeholder {
+    @content;
+  }
+
+  &:input-placeholder {
     @content;
   }
 }
@@ -228,20 +239,20 @@
 
 @mixin phones-fit {
   @supports (padding: max(0px)) {
+    padding-right: env(safe-area-inset-right);
     ///* iOS 11 */
     //padding-left: constant(safe-area-inset-left);
     //padding-right: constant(safe-area-inset-right);
 
     /* iOS 11.2+ */
     padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
   }
 }
 
 @mixin phones-fit-max-evn($max) {
   @supports (padding: max(0px)) {
-    padding-left: max(#{$max}, env(safe-area-inset-left));
     padding-right: max(#{$max}, env(safe-area-inset-right));
+    padding-left: max(#{$max}, env(safe-area-inset-left));
   }
 }
 
@@ -253,7 +264,7 @@
 ) {
   background-position: center;
   transition: background $delay $function;
-  -webkit-transition: background $delay $function;
+  transition: background $delay $function;
 
   &:hover {
     background: var(--ripple-effect-first-color, $effect-first-color)
@@ -269,7 +280,7 @@
     background-color: var(--ripple-effect-first-color, $effect-first-color);
     background-size: 100%;
     transition: background 0s;
-    -webkit-transition: background 0s;
+    transition: background 0s;
   }
 }
 @function strip-unit($value) {
@@ -283,7 +294,7 @@
 ) {
   background-position: center;
   transition: background $delay $function;
-  -webkit-transition: background $delay $function;
+  transition: background $delay $function;
 
   &:hover {
     background: $effect-first-color
@@ -299,14 +310,15 @@
 }
 
 @mixin linkShadow {
-  filter: drop-shadow(0px 0px 0.5px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 0 0.5px rgb(0 0 0 / 60%));
 }
 
 @mixin linkHover($color) {
-  filter: drop-shadow(0px 0px 5px rgba($color, 0));
+  filter: drop-shadow(0 0 5px rgba($color, 0));
   transition: 300ms ease;
+
   &:hover {
-    filter: drop-shadow(0px 0px 0.5px rgba($color, 0.6));
+    filter: drop-shadow(0 0 0.5px rgba($color, 0.6));
   }
 }
 
@@ -317,35 +329,38 @@
 }
 
 @mixin selection_Dark {
-  ::-moz-selection {
-    background: $translucentWhite;
-    color: black;
-  }
   ::selection {
-    background: $translucentWhite;
     color: black;
+    background: $translucentWhite;
+  }
+
+  ::selection {
+    color: black;
+    background: $translucentWhite;
   }
 }
 
 @mixin selection_Light {
-  ::-moz-selection {
-    background: $translucentBlack;
-    color: white;
-  }
   ::selection {
-    background: $translucentBlack;
     color: white;
+    background: $translucentBlack;
+  }
+
+  ::selection {
+    color: white;
+    background: $translucentBlack;
   }
 }
 
 @mixin selection_Invisible {
-  ::-moz-selection {
-    background: transparent;
-    color: transparent;
-  }
   ::selection {
-    background: transparent;
     color: transparent;
+    background: transparent;
+  }
+
+  ::selection {
+    color: transparent;
+    background: transparent;
   }
 }
 

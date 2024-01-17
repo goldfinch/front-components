@@ -9,11 +9,11 @@
   &::-webkit-scrollbar,
   &::-webkit-scrollbar-thumb,
   &::-webkit-scrollbar-track {
-    -webkit-appearance: none;
     display: none;
 
     width: 0;
     height: 0;
+    appearance: none;
   }
 }
 

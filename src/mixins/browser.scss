@@ -17,6 +17,7 @@
   @supports (-moz-appearance: none) {
     @content;
   }
+
   //
   //@-moz-document url-prefix() {
   //  @content;
@@ -32,7 +33,7 @@
 
 // IE11 and Edge
 @mixin ie11andedge {
-  @media screen and (-webkit-min-device-pixel-ratio: 0) and (-ms-high-contrast: none),
+  @media screen and (min-device-pixel-ratio: 0) and (-ms-high-contrast: none),
     (-ms-high-contrast: active) {
     @content;
   }
@@ -56,14 +57,14 @@
 
 // Chrome
 @mixin firefox {
-  @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  @media screen and (min-device-pixel-ratio: 0) and (resolution >= 0.001dpcm) {
     @content;
   }
 }
 
 // Safari
 @mixin safari {
-  @media not all and (min-resolution: 0.001dpcm) {
+  @media not all and (resolution >= 0.001dpcm) {
     @supports (-webkit-appearance: none) {
       @content;
     }
@@ -71,7 +72,7 @@
 }
 
 @mixin chromium {
-  @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  @media screen and (min-device-pixel-ratio: 0) and (resolution >= 0.001dpcm) {
     @content;
   }
 }
@@ -98,7 +99,7 @@
   }
 }
 @mixin safari {
-  @media (min-resolution: 0.001dpcm) {
+  @media (resolution >= 0.001dpcm) {
     @supports (-webkit-appearance: none) and (stroke-color: transparent) {
       @content;
     }
@@ -112,7 +113,7 @@
 }
 
 @mixin ie {
-  _:-ms-fullscreen {
+  _:fullscreen {
     @content;
   }
 
@@ -120,6 +121,7 @@
     @content;
   }
 }
+
 // IE11 only
 @mixin apply-to-ie11-only($selector) {
   @media all and (-ms-high-contrast: none) {
@@ -353,7 +355,7 @@
   }
 }
 @mixin hack-chrome {
-  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @media screen and (min-device-pixel-ratio: 0) {
     @content;
   }
 }
@@ -434,7 +436,7 @@
 
 // IE11 and Edge
 @mixin ie11andedge {
-  @media screen and (-webkit-min-device-pixel-ratio: 0) and (-ms-high-contrast: none),
+  @media screen and (min-device-pixel-ratio: 0) and (-ms-high-contrast: none),
     (-ms-high-contrast: active) {
     @content;
   }
@@ -458,14 +460,14 @@
 
 // Chrome
 @mixin firefox {
-  @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  @media screen and (min-device-pixel-ratio: 0) and (resolution >= 0.001dpcm) {
     @content;
   }
 }
 
 // Safari
 @mixin safari {
-  @media not all and (min-resolution: 0.001dpcm) {
+  @media not all and (resolution >= 0.001dpcm) {
     @supports (-webkit-appearance: none) {
       @content;
     }
@@ -542,13 +544,13 @@
 }
 
 @mixin isSafari() {
-  @media screen and (min-color-index: 0) and (-webkit-min-device-pixel-ratio: 0) {
+  @media screen and (minindex: 0) and (-webkit-min-device-pixel-ratio: 0) {
     @content;
   }
 }
 
 @mixin isRetina() {
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  @media (min-device-pixel-ratio: 2), (resolution >= 192dpi) {
     @content;
   }
 }

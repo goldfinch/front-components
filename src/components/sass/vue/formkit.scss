@@ -26,16 +26,17 @@
 .formkit-messages {
   padding: 0;
   margin: $form-text-margin-top 0 0;
-  list-style-type: none;
   font-size: $form-text-font-size;
   color: $form-text-color;
+  list-style-type: none;
 }
+
 .formkit-messages .formkit-message {
   color: var(--bs-danger);
 
-  &:before {
-    content: '-';
+  &::before {
     margin-right: 5px;
+    content: '-';
   }
 }
 
@@ -47,6 +48,7 @@
 
 .formkit-outer:not([data-type='dropdown']) .formkit-inner {
   position: relative;
+
   // box-shadow: var(--fk-border-box-shadow);
   // border-radius: var(--fk-border-radius);
   display: flex;
@@ -72,28 +74,31 @@
 
 .formkit-outer {
   & .formkit-icon {
-    width: 2.5em;
+    display: flex;
     flex-grow: 0;
     flex-shrink: 0;
-    display: flex;
     align-self: stretch;
+    width: 2.5em;
     user-select: none;
   }
+
   & .formkit-icon.formkit-prefix-icon {
-    border-radius: var(--fk-border-radius-tl) 0 0 var(--fk-border-radius-bl);
     background: var(--fk-bg-decorator);
-    box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.33);
+    border-radius: var(--fk-border-radius-tl) 0 0 var(--fk-border-radius-bl);
+    box-shadow: 1px 0 0 0 rgb(0 0 0 / 33%);
   }
+
   & .formkit-icon.formkit-suffix-icon {
     width: 1.75em;
-    padding-left: 0em;
     padding-right: 0.75em;
+    padding-left: 0;
   }
+
   & .formkit-icon svg {
     width: 100%;
-    margin: auto;
-    max-height: 1em;
     max-width: 1em;
+    max-height: 1em;
+    margin: auto;
   }
 }
 
@@ -105,17 +110,20 @@
     background: none;
     box-shadow: none;
   }
+
   & .formkit-inner:focus-within .formkit-icon {
-    color: currentColor;
+    color: currentcolor;
   }
+
   & .formkit-icon {
-    padding: 0;
     width: 1em;
+    padding: 0;
     font-size: 1rem;
 
     &.formkit--prefix-icon {
       margin-right: 0.5em;
     }
+
     &.formkit-suffix-icon {
       margin-left: 0.5em;
     }
@@ -125,12 +133,13 @@
 [data-type='button'],
 [data-type='submit'] {
   & .formkit-prefix-icon {
-    margin-left: -0.5em;
     margin-right: 0.5em;
+    margin-left: -0.5em;
   }
+
   & .formkit-suffix-icon {
-    margin-left: 0.5em;
     margin-right: -0.5em;
+    margin-left: 0.5em;
   }
 }
 
@@ -138,18 +147,21 @@
   &[data-prefix-icon-click='true'] .formkit-prefix-icon {
     cursor: pointer;
   }
+
   &[data-type='color'] {
     & input[type='color'] {
       &::-webkit-color-swatch {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
+
       &::-moz-color-swatch {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
     }
   }
+
   &[data-type='file'] {
     &[data-multiple='true'] .formkit-file-remove {
       left: calc(
@@ -163,22 +175,26 @@
   &[data-suffix-icon-click='true'] .formkit-suffix-icon {
     cursor: pointer;
   }
+
   &[data-type='color'] {
     & input[type='color'] {
       &::-webkit-color-swatch {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }
+
       &::-moz-color-swatch {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }
     }
+
     & .formkit-icon.formkit-suffix-icon {
-      padding-right: 0;
       width: 2.5em;
+      padding-right: 0;
     }
   }
+
   &[data-type='select'] .formkit-inner::after {
     right: 2.5em;
   }
