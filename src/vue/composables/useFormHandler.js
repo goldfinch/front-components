@@ -1,28 +1,26 @@
-import { ref, watch, nextTick } from 'vue'
-import { useElementVisibility } from '@vueuse/core'
-import useFormData from '../composables/useFormData'
-import { load } from 'recaptcha-v3'
+import { ref, watch, nextTick } from 'vue';
+import { useElementVisibility } from '@vueuse/core';
+import { load } from 'recaptcha-v3';
 import axios from 'axios';
-import { reset } from '@formkit/core'
+import { reset } from '@formkit/core';
+import useFormData from './useFormData';
 // import LenisPlugin from '../../plugins/lenis/lenis';
 
 export default function useFormHandler(cfg) {
+  const isVisible = useElementVisibility(cfg.ref);
 
-  const isVisible = useElementVisibility(cfg.ref)
-
-  const recaptchaLoaded = ref(false)
-  const recaptcha = ref(null)
+  const recaptchaLoaded = ref(false);
+  const recaptcha = ref(null);
 
   async function submitHandler(data, node) {
-
     // if recaptcha hasn't been loaded yet (unlikely but still)
     if (!recaptcha.value) {
-      alert('Sorry, this request hasn\'t been sent. It could be due to a weak internet connection. Please, refresh the page a try again.')
+      alert('Sorry, this request hasn\'t been sent. It could be due to a weak internet connection. Please, refresh the page a try again.');
     }
 
     showBadge();
 
-    const token = await recaptcha.value.execute(cfg.action)
+    const token = await recaptcha.value.execute(cfg.action);
 
     data.token = token;
 
@@ -34,67 +32,53 @@ export default function useFormHandler(cfg) {
       headers: { 'X-CSRF-TOKEN': csrfToken.content },
       data: useFormData(data),
     })
-    .then(async function (response) {
+      .then(async (response) => {
+        if (response.status == 200 && response.data.status == true) {
+          hideBadge();
 
-      if (response.status == 200 && response.data.status == true) {
+          reset(cfg.id);
 
-        hideBadge();
+          cfg.formSubmited.value = true;
 
-        reset(cfg.id);
+          if (cfg.supplies.thankyou_page) {
+            window.location = `/thank-you/${cfg.supplies.form.action}`;
+          } else {
+            cfg.formMessage.value = response.data.message;
+          }
 
-        cfg.formSubmited.value = true;
+          await nextTick();
 
-        if (cfg.supplies.thankyou_page) {
-          window.location = '/thank-you/' + cfg.supplies.form.action;
+          // LenisPlugin.scrollTo('#contactFormMessage');
         } else {
-          cfg.formMessage.value = response.data.message;
-        }
-
-        await nextTick()
-
-        // LenisPlugin.scrollTo('#contactFormMessage');
-
-      } else {
 
         //
-      }
-
-    })
-    .catch(function (error) {
-
-      if (error.response) {
-
-        if (error.response.data instanceof Object) {
-
-          for (const [key, value] of Object.entries(error.response.data)) {
-
-            node.setErrors(
-              // ['There was an error in this form'],
-              {
-                [key]: value,
-              }
-            )
-          }
-        } else {
-
-          node.setErrors(
-            [error.response.data],
-          )
         }
-      }
-
-    })
-
+      })
+      .catch((error) => {
+        if (error.response) {
+          if (error.response.data instanceof Object) {
+            for (const [key, value] of Object.entries(error.response.data)) {
+              node.setErrors(
+              // ['There was an error in this form'],
+                {
+                  [key]: value,
+                },
+              );
+            }
+          } else {
+            node.setErrors(
+              [error.response.data],
+            );
+          }
+        }
+      });
   }
 
   async function recaptchaInit() {
-
     const siteKey = document.head.querySelector('meta[name="g-site-key"]');
 
     if (siteKey) {
-
-      recaptcha.value = await load(siteKey.content)
-
+      recaptcha.value = await load(siteKey.content);
     }
   }
 
@@ -103,21 +87,21 @@ export default function useFormHandler(cfg) {
       recaptchaLoaded.value = true;
       recaptchaInit();
     }
-  })
+  });
 
   const showBadge = () => {
-    var badge = document.getElementsByClassName('grecaptcha-badge');
+    const badge = document.getElementsByClassName('grecaptcha-badge');
     if (badge.length) {
       badge[0].classList.add('grecaptcha-badge--show');
     }
-  }
+  };
 
   const hideBadge = () => {
-    var badge = document.getElementsByClassName('grecaptcha-badge');
+    const badge = document.getElementsByClassName('grecaptcha-badge');
     if (badge.length) {
       badge[0].classList.remove('grecaptcha-badge--show');
     }
-  }
+  };
 
-  return { submitHandler }
+  return { submitHandler };
 }

@@ -5,7 +5,7 @@ yup.addMethod(yup.string, 'emailAdvanced', function () {
   return this.test(
     'is-email',
     '${path} must be a valid email',
-    value => regex.test(value),
+    (value) => regex.test(value),
   );
 });
 

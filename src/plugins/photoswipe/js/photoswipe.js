@@ -1,8 +1,7 @@
-import $ from 'jquery'
-import PhotoSwipeLightbox from 'photoswipe/lightbox'
+import $ from 'jquery';
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
 
 class Photoswipe {
-
   constructor() {
 
     // .. updatesSwipe
@@ -33,11 +32,10 @@ class Photoswipe {
   // }
 
   lightboxCubicAnimation(lightbox) {
-
     const backEasing = {
       in: 'cubic-bezier(0.6, -0.28, 0.7, 1)',
       out: 'cubic-bezier(0.3, 0, 0.32, 1.275)',
-      inOut: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)'
+      inOut: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
     };
 
     lightbox.on('firstUpdate', () => {
@@ -52,7 +50,6 @@ class Photoswipe {
 
     return lightbox;
   }
-
 }
 
 export default Photoswipe;

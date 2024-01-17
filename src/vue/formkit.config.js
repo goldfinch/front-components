@@ -1,8 +1,8 @@
-import { generateClasses } from '@formkit/themes'
-import { createAutoAnimatePlugin } from '@formkit/addons'
-import { createInput } from '@formkit/vue'
+import { generateClasses } from '@formkit/themes';
+import { createAutoAnimatePlugin } from '@formkit/addons';
+import { createInput } from '@formkit/vue';
 
-import DropdownField from '@/extra/js/vue/components/form/DropdownField.vue'
+import DropdownField from '@/extra/js/vue/components/form/DropdownField.vue';
 
 /**
  * @formkit/themes/dist/tailwindcss/genesis/index.mjs
@@ -23,8 +23,8 @@ const config = {
         global: ['outer', 'inner'],
         form: ['form'],
         repeater: ['items'],
-      }
-    )
+      },
+    ),
   ],
   inputs: {
     dropdown: createInput(DropdownField, {
@@ -37,20 +37,20 @@ const config = {
         outer: '',
         input: '$reset form-control',
         label: 'form-label-lg mt-3',
-        help: '$reset form-text'
+        help: '$reset form-text',
       },
       form: {
-        form: "$reset"
+        form: '$reset',
       },
       range: {
         input: '$reset form-range',
       },
       submit: {
         outer: '$reset mt-4',
-        input: '$reset btn btn-outline-primary text-uppercase'
-      }
-    })
-  }
-}
+        input: '$reset btn btn-outline-primary text-uppercase',
+      },
+    }),
+  },
+};
 
-export default config
+export default config;
