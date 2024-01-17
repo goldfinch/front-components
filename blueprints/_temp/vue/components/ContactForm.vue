@@ -1,9 +1,8 @@
 <script setup>
-
-import { ref } from 'vue'
-import useFormHandler from '../../../../../vendor/goldfinch/front-components/src/vue/composables/useFormHandler'
-import { FormKitMessages } from '@formkit/vue'
-import { useElementVisibility } from '@vueuse/core'
+import { ref } from 'vue';
+import useFormHandler from '../../../../../vendor/goldfinch/front-components/src/vue/composables/useFormHandler';
+import { FormKitMessages } from '@formkit/vue';
+import { useElementVisibility } from '@vueuse/core';
 
 const testMode = false;
 
@@ -31,23 +30,21 @@ const fieldHowOptions = [
 ];
 
 // PageSpeed Insights
-const contactFormVisible = useElementVisibility(contactForm)
-
+const contactFormVisible = useElementVisibility(contactForm);
 </script>
 <template>
-
   <Transition>
     <FormKit
-        v-if="!formSubmited"
-        id="contactForm"
-        ref="contactForm"
-        @submit="submitHandler"
-        type="form"
-        :config="{ validationVisibility: 'submit' }"
-        form-class="contact-form row"
-        actions-class="col-12"
+      v-if="!formSubmited"
+      id="contactForm"
+      ref="contactForm"
+      @submit="submitHandler"
+      type="form"
+      :config="{ validationVisibility: 'submit' }"
+      form-class="contact-form row"
+      actions-class="col-12"
     >
-        <FormKit
+      <FormKit
         type="text"
         name="name"
         id="field-name"
@@ -55,9 +52,9 @@ const contactFormVisible = useElementVisibility(contactForm)
         label="Name"
         outer-class="col-md-6"
         :value="testMode ? 'John Doe' : null"
-        />
+      />
 
-        <FormKit
+      <FormKit
         type="text"
         name="phone"
         id="field-phone"
@@ -65,9 +62,9 @@ const contactFormVisible = useElementVisibility(contactForm)
         label="Phone"
         outer-class="col-md-6"
         :value="testMode ? '0205555555' : null"
-        />
+      />
 
-        <FormKit
+      <FormKit
         type="email"
         name="email"
         id="field-email"
@@ -75,9 +72,9 @@ const contactFormVisible = useElementVisibility(contactForm)
         label="Email"
         outer-class="col-md-6"
         :value="testMode ? 'john@doe.nz' : null"
-        />
+      />
 
-        <FormKit
+      <FormKit
         v-if="contactFormVisible"
         type="dropdown"
         name="how"
@@ -88,41 +85,39 @@ const contactFormVisible = useElementVisibility(contactForm)
         :options="fieldHowOptions"
         outer-class="col-md-6"
         :value="testMode ? 2 : null"
-        />
+      />
 
-        <FormKit
+      <FormKit
         type="textarea"
         name="message"
         label="Message"
         rows="10"
         outer-class="col-12"
         :value="testMode ? 'I\'m about to tell you a story' : null"
-        />
+      />
 
-        <FormKit
+      <FormKit
         type="checkbox"
         label="Subscribe to newsletter"
         name="newsletter"
         :config="{
-            classes: {
+          classes: {
             label: '$reset form-check-label',
             wrapper: '$reset icheck-primary icheck-inline pt-3',
             input: '$reset form-check-input',
-            }
+          },
         }"
         outer-class="col-12"
-        />
+      />
 
-        <div class="col-12">
-            <FormKitMessages />
-        </div>
-
+      <div class="col-12">
+        <FormKitMessages />
+      </div>
     </FormKit>
     <div v-else>
-        <div v-html="formMessage"></div>
+      <div v-html="formMessage"></div>
     </div>
   </Transition>
-
 </template>
 
 <style lang="sass">

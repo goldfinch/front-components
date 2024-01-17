@@ -3,9 +3,7 @@ import PhotoSwipeLightbox from 'photoswipe/lightbox';
 
 class Photoswipe {
   constructor() {
-
     // .. updatesSwipe
-
   }
 
   // updatesSwipe() {

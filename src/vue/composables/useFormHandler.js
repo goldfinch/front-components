@@ -15,7 +15,9 @@ export default function useFormHandler(cfg) {
   async function submitHandler(data, node) {
     // if recaptcha hasn't been loaded yet (unlikely but still)
     if (!recaptcha.value) {
-      alert('Sorry, this request hasn\'t been sent. It could be due to a weak internet connection. Please, refresh the page a try again.');
+      alert(
+        "Sorry, this request hasn't been sent. It could be due to a weak internet connection. Please, refresh the page a try again.",
+      );
     }
 
     showBadge();
@@ -50,8 +52,7 @@ export default function useFormHandler(cfg) {
 
           // LenisPlugin.scrollTo('#contactFormMessage');
         } else {
-
-        //
+          //
         }
       })
       .catch((error) => {
@@ -59,16 +60,14 @@ export default function useFormHandler(cfg) {
           if (error.response.data instanceof Object) {
             for (const [key, value] of Object.entries(error.response.data)) {
               node.setErrors(
-              // ['There was an error in this form'],
+                // ['There was an error in this form'],
                 {
                   [key]: value,
                 },
               );
             }
           } else {
-            node.setErrors(
-              [error.response.data],
-            );
+            node.setErrors([error.response.data]);
           }
         }
       });

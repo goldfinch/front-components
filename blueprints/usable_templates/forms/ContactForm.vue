@@ -1,30 +1,27 @@
 <script setup>
+import useFormBuilder from '../../composables/useFormBuilder';
+import { FormKitMessages } from '@formkit/vue';
 
-import useFormBuilder from '../../composables/useFormBuilder'
-import { FormKitMessages } from '@formkit/vue'
-
-const props = defineProps(['supplies'])
+const props = defineProps(['supplies']);
 const builder = useFormBuilder(props);
 
 // start custom
 
 const fieldHowOptions = props.supplies.parameters.how_options;
-
 </script>
 <template>
-
   <Transition>
     <FormKit
-        v-if="!builder.formSubmited.value"
-        :ref="builder.form"
-        :id="builder.formId"
-        @submit="builder.submitHandler"
-        type="form"
-        :config="{ validationVisibility: 'submit' }"
-        form-class="contact-form row"
-        actions-class="col-12"
+      v-if="!builder.formSubmited.value"
+      :ref="builder.form"
+      :id="builder.formId"
+      @submit="builder.submitHandler"
+      type="form"
+      :config="{ validationVisibility: 'submit' }"
+      form-class="contact-form row"
+      actions-class="col-12"
     >
-        <FormKit
+      <FormKit
         type="text"
         name="name"
         id="field-name"
@@ -32,9 +29,9 @@ const fieldHowOptions = props.supplies.parameters.how_options;
         label="Name"
         outer-class="col-md-6"
         :value="builder.testMode ? 'John Doe' : null"
-        />
+      />
 
-        <FormKit
+      <FormKit
         type="text"
         name="phone"
         id="field-phone"
@@ -42,9 +39,9 @@ const fieldHowOptions = props.supplies.parameters.how_options;
         label="Phone"
         outer-class="col-md-6"
         :value="builder.testMode ? '0205555555' : null"
-        />
+      />
 
-        <FormKit
+      <FormKit
         type="email"
         name="email"
         id="field-email"
@@ -52,9 +49,9 @@ const fieldHowOptions = props.supplies.parameters.how_options;
         label="Email"
         outer-class="col-md-6"
         :value="builder.testMode ? 'john@doe.nz' : null"
-        />
+      />
 
-        <FormKit
+      <FormKit
         v-if="builder.formVisible.value"
         type="dropdown"
         name="how"
@@ -65,32 +62,32 @@ const fieldHowOptions = props.supplies.parameters.how_options;
         :options="fieldHowOptions"
         outer-class="col-md-6"
         :value="builder.testMode ? fieldHowOptions[0].label : null"
-        />
+      />
 
-        <FormKit
+      <FormKit
         type="textarea"
         name="message"
         label="Message"
         rows="10"
         outer-class="col-12"
         :value="builder.testMode ? 'I\'m about to tell you a story' : null"
-        />
+      />
 
-        <FormKit
+      <FormKit
         type="checkbox"
         label="Subscribe to newsletter"
         name="newsletter"
         :config="{
-            classes: {
+          classes: {
             label: '$reset form-check-label',
             wrapper: '$reset icheck-primary icheck-inline pt-3',
             input: '$reset form-check-input',
-            }
+          },
         }"
         outer-class="col-12"
-        />
+      />
 
-        <FormKit
+      <FormKit
         type="hidden"
         name="segment_id"
         id="field-segment-id"
@@ -98,18 +95,16 @@ const fieldHowOptions = props.supplies.parameters.how_options;
         label="Segment"
         outer-class="col-md-6"
         :value="builder.fieldSegmentID"
-        />
+      />
 
-        <div class="col-12">
-            <FormKitMessages />
-        </div>
-
+      <div class="col-12">
+        <FormKitMessages />
+      </div>
     </FormKit>
     <div v-else>
-        <div v-html="builder.formMessage.value"></div>
+      <div v-html="builder.formMessage.value"></div>
     </div>
   </Transition>
-
 </template>
 
 <style lang="sass">

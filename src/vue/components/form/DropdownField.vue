@@ -1,48 +1,47 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-import TomSelect from 'tom-select'
+import { ref, onMounted, watch } from 'vue';
+import TomSelect from 'tom-select';
 
 const props = defineProps({
   context: Object,
-})
+});
 
-const tomSelectInstance = ref(null)
-const tomSelectRef = ref(null)
+const tomSelectInstance = ref(null);
+const tomSelectRef = ref(null);
 
 function handleChange(value) {
-  props.context.node.input(value)
+  props.context.node.input(value);
 }
 
 onMounted(() => {
-
   // lighthouse pagespeed
 
-    tomSelectInstance.value = new TomSelect(tomSelectRef.value, {
-        onInitialize: function() {
-        if (!this.dropdown_content.hasAttribute('data-lenis-prevent')) {
-            this.dropdown_content.setAttribute('data-lenis-prevent', '')
-        }
-        },
-        onChange: () => handleChange(tomSelectInstance.value.getValue()),
-        allowEmptyOption: true,
-        // create: true,
-        // sortField: {
-        //   field: 'text',
-        //   direction: 'asc'
-        // }
-    });
+  tomSelectInstance.value = new TomSelect(tomSelectRef.value, {
+    onInitialize: function () {
+      if (!this.dropdown_content.hasAttribute('data-lenis-prevent')) {
+        this.dropdown_content.setAttribute('data-lenis-prevent', '');
+      }
+    },
+    onChange: () => handleChange(tomSelectInstance.value.getValue()),
+    allowEmptyOption: true,
+    // create: true,
+    // sortField: {
+    //   field: 'text',
+    //   direction: 'asc'
+    // }
+  });
+});
 
-})
-
-watch(() => props.context.disabled, (current, old) => {
-
-  if (current) {
-    tomSelectInstance.value.disable()
-  } else {
-    tomSelectInstance.value.enable()
-  }
-})
-
+watch(
+  () => props.context.disabled,
+  (current, old) => {
+    if (current) {
+      tomSelectInstance.value.disable();
+    } else {
+      tomSelectInstance.value.enable();
+    }
+  },
+);
 </script>
 
 <template>
@@ -52,10 +51,19 @@ watch(() => props.context.disabled, (current, old) => {
     :disabled="context.disabled"
     :value="context._value"
   >
-    <option value="" v-text="context.attrs.placeholder" v-if="context.attrs.placeholder"></option>
-    <option v-for="option in context.attrs.options" :v-key="option.value" :value="option.value" v-text="option.label"></option>
+    <option
+      value=""
+      v-text="context.attrs.placeholder"
+      v-if="context.attrs.placeholder"
+    ></option>
+    <option
+      v-for="option in context.attrs.options"
+      :v-key="option.value"
+      :value="option.value"
+      v-text="option.label"
+    ></option>
   </select>
-    <!--
+  <!--
       :model-value="context._value"
       @update:model-value="context.node.input($event)"
       v-bind="context.attrs"

@@ -10,9 +10,15 @@ class LazyLoading {
 
     const observer = lozad('[data-loaded]', {
       loaded(el) {
-        if (el.parentElement) el.parentElement.setAttribute('data-children-loaded', true);
-        if (el.parentElement.parentElement) el.parentElement.parentElement.setAttribute('data-children-loaded', true);
-        if (el && el.hasAttribute('data-loaded-interact')) el.setAttribute('data-loaded-interact', true); // el.style.backgroundImage = null;
+        if (el.parentElement)
+          el.parentElement.setAttribute('data-children-loaded', true);
+        if (el.parentElement.parentElement)
+          el.parentElement.parentElement.setAttribute(
+            'data-children-loaded',
+            true,
+          );
+        if (el && el.hasAttribute('data-loaded-interact'))
+          el.setAttribute('data-loaded-interact', true); // el.style.backgroundImage = null;
       },
     });
     observer.observe();
@@ -22,12 +28,23 @@ class LazyLoading {
     if (preLoadedElements) {
       // preLoadedElements.style.backgroundImage = 'url('+preLoadedElements.getAttribute('data-poster')+')';
 
-      ['touchstart', 'touchmove', 'scroll', 'mousemove', 'mousedown', 'ontouchstart'].map((event) => {
-        window.addEventListener(event, (e) => {
-          if (!preLoadedElements.getAttribute('data-loaded-interact')) {
-            observer.triggerLoad(preLoadedElements);
-          }
-        }, false);
+      [
+        'touchstart',
+        'touchmove',
+        'scroll',
+        'mousemove',
+        'mousedown',
+        'ontouchstart',
+      ].map((event) => {
+        window.addEventListener(
+          event,
+          (e) => {
+            if (!preLoadedElements.getAttribute('data-loaded-interact')) {
+              observer.triggerLoad(preLoadedElements);
+            }
+          },
+          false,
+        );
       });
     }
 

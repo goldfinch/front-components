@@ -2,10 +2,8 @@ import * as yup from 'yup';
 
 yup.addMethod(yup.string, 'emailAdvanced', function () {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return this.test(
-    'is-email',
-    '${path} must be a valid email',
-    (value) => regex.test(value),
+  return this.test('is-email', '${path} must be a valid email', (value) =>
+    regex.test(value),
   );
 });
 

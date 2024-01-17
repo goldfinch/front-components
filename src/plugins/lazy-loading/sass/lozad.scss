@@ -4,13 +4,16 @@ img:not([src], [srcset]) {
 }
 
 img[data-loaded] {
-  filter: blur(.5rem);
+  filter: blur(0.5rem);
   opacity: 0.5;
-  transition: filter 0.3s ease, opacity 0.3s ease, transform 1s ease;
+  transition:
+    filter 0.3s ease,
+    opacity 0.3s ease,
+    transform 1s ease;
   transform: scale(0.97);
 }
 
-img[data-loaded="true"] {
+img[data-loaded='true'] {
   filter: blur(0);
   opacity: 1;
   transform: scale(1);
