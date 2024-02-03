@@ -6,7 +6,8 @@ const useFormBuilder = (props) => {
   const formSubmited = ref(false);
   const formMessage = ref(null);
 
-  const { supplies } = props;
+  const supplies = JSON.parse(props.supplies);
+
   const testMode = supplies.form.testmode;
   const fieldSegmentID = supplies.id;
 
@@ -35,6 +36,7 @@ const useFormBuilder = (props) => {
     form,
     formId,
     submitHandler,
+    supplies,
   };
 };
 
