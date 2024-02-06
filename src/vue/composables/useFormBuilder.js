@@ -6,7 +6,7 @@ const useFormBuilder = (props) => {
   const formSubmited = ref(false);
   const formMessage = ref(null);
 
-  const supplies = JSON.parse(props.supplies);
+  const supplies = props.supplies instanceof Object ? props.supplies : JSON.parse(props.supplies);
 
   const testMode = supplies.form.testmode;
   const fieldSegmentID = supplies.id;
