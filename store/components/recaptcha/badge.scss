@@ -1,0 +1,12 @@
+.grecaptcha-badge {
+  @extend .grecaptcha-badge--hide;
+}
+
+.grecaptcha-badge.grecaptcha-badge--hide {
+  right: -266px !important;
+}
+
+.grecaptcha-badge.grecaptcha-badge--show {
+  right: -186px !important;
+  visibility: visible;
+}

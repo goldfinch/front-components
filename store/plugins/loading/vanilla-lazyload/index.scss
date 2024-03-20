@@ -1,0 +1,16 @@
+.lazy {
+  filter: blur(0.5rem);
+  opacity: 0.5;
+  transition:
+    filter 0.3s ease,
+    opacity 0.3s ease,
+    transform 1s ease;
+  transform: scale(0.97);
+}
+.lazy.loaded {
+  filter: blur(0);
+  opacity: 1;
+  transform: scale(1);
+}
+.lazy.entered {}
+.lazy.loading {}
