@@ -1,0 +1,164 @@
+/* BOOTSTRAP */
+@import 'bootstrap/scss/mixins/banner';
+@include bsBanner('');
+
+
+// scss-docs-start import-stack
+// Configuration
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/variables-dark';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities';
+/* BOOTSTRAP */
+
+@import './sass/vars';
+
+// Components
+@import '@goldfinch/store/components/recaptcha';
+@import '@goldfinch/store/vue/form';
+
+// @import "@goldfinch/src/components/sass/vue/formkit"
+
+.form-label {
+  font-family: $font-secondary;
+}
+
+.formkit-option {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.formkit-option {
+  min-height: 22px;
+  padding-left: 0;
+  margin-top: 6px !important;
+  margin-bottom: 6px !important;
+}
+
+.icheck-inline {
+  display: inline-block;
+}
+
+.icheck-inline + .icheck-inline {
+  margin-top: 6px;
+  margin-left: 0.75rem;
+}
+
+// [class*="icheck-"] > label,
+.formkit-option .formkit-label {
+  position: relative;
+  display: inline-block;
+  margin: 0 !important;
+  font-weight: normal;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+// [class*="icheck-"] > input:first-child,
+.formkit-option .formkit-inner > input:first-child {
+  position: absolute !important;
+  margin: 0;
+  opacity: 0;
+}
+
+// [class*="icheck-"] > input:first-child:disabled,
+.formkit-option .formkit-inner > input:first-child:disabled {
+  cursor: default;
+}
+
+.formkit-option .formkit-inner > input:first-child + .formkit-decorator::before {
+// [class*="icheck-"] > input:first-child + input[type="hidden"] + label::before,
+// .formkit-option .formkit-label::before {
+  position: absolute;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  margin-left: -35px;
+  content: '';
+  border: 1px solid $input-border-color;
+  border-radius: $border-radius;
+}
+
+.formkit-option .formkit-inner input:first-child:checked + .formkit-decorator::after {
+// [class*="icheck-"] > input:first-child:checked + input[type="hidden"] + label::after,
+// .formkit-option[data-checked='true'] .formkit-label::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 7px;
+  height: 10px;
+  margin-left: -35px;
+  content: '';
+  border: solid 2px #fff;
+  border-top: none;
+  border-left: none;
+  transform: translate(7.75px, 4.5px) rotate(45deg);
+  transform: translate(7.75px, 4.5px) rotate(45deg);
+}
+
+// [class*="icheck-"] > input[type="radio"]:first-child + label::before,
+// [class*="icheck-"] > input[type="radio"]:first-child + input[type="hidden"] + label::before {
+//   border-radius: 50%;
+// }
+
+.formkit-option .formkit-inner > input:first-child:not(:checked):not(:disabled):hover + .formkit-decorator::before {
+// [class*="icheck-"] > input:first-child:not(:checked):not(:disabled):hover + input[type="hidden"] + label::before,
+// .formkit-option:not([data-disabled='true'], [data-checked='true']):hover
+  // .formkit-label::before {
+  border-width: 2px;
+}
+
+.formkit-option .formkit-inner > input:first-child:disabled + .formkit-decorator,
+// [class*="icheck-"] > input:first-child:disabled + input[type="hidden"] + label,
+.formkit-option .formkit-inner > input:first-child:disabled + .formkit-decorator::before,
+// [class*="icheck-"] > input:first-child:disabled + input[type="hidden"] + label::before
+// .formkit-option[data-disabled='true'] .formkit-label,
+// .formkit-option[data-disabled='true'] .formkit-label::before {
+  {
+  pointer-events: none;
+  cursor: default;
+  filter: alpha(opacity=65);
+  box-shadow: none;
+  box-shadow: none;
+  opacity: 0.65;
+}
+
+// .icheck-default > input:first-child:not(:checked):not(:disabled):hover + label::before,
+// .icheck-default > input:first-child:not(:checked):not(:disabled):hover + input[type="hidden"] + label::before {
+//   border-color: #adadad;
+// }
+
+// .icheck-default > input:first-child:checked + label::before,
+// .icheck-default > input:first-child:checked + input[type="hidden"] + label::before {
+//   background-color: #e6e6e6;
+//   border-color: #adadad;
+// }
+
+// .icheck-default > input:first-child:checked + label::after,
+// .icheck-default > input:first-child:checked + input[type="hidden"] + label::after {
+//   border-bottom-color: #333;
+//   border-right-color: #333;
+// }
+
+.formkit-option .formkit-inner > input:first-child:not(:checked):not(:disabled):hover + .formkit-decorator::before {
+// .icheck-primary > input:first-child:not(:checked):not(:disabled):hover + input[type="hidden"] + label::before,
+// .icheck-primary:not([data-disabled='true'], [data-checked='true']):hover
+  // .formkit-label::before {
+  border-color: $form-check-input-checked-border-color;
+}
+
+.formkit-option .formkit-inner > input:first-child:checked + .formkit-decorator::before {
+  background-color: $form-check-input-checked-bg-color;
+  border-color: $form-check-input-checked-border-color;
+}
+
+.formkit-option .formkit-inner > input:first-child:checked + .formkit-decorator::after {
+// .icheck-primary > input:first-child:checked + input[type="hidden"] + label::before,
+// .icheck-primary[data-checked='true'] .formkit-label::before {
+  // background-color: $form-check-input-checked-bg-color;
+  // border-color: $form-check-input-checked-border-color;
+}
