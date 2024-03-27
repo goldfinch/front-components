@@ -12,3 +12,7 @@ body {
 body.active {
   overflow: hidden;
 }
+
+:focus-visible {
+  outline: #666 dashed 1px;
+}
