@@ -16,6 +16,7 @@ const fieldHowOptions = props.supplies.parameters.how_options;
       :ref="builder.form"
       :id="builder.formId"
       @submit="builder.submitHandler"
+      @submit-invalid="builder.submitInvalidHandler"
       type="form"
       :config="{ validationVisibility: 'submit' }"
       form-class="contact-form row"

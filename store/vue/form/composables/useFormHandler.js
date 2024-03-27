@@ -3,6 +3,7 @@ import { useElementVisibility } from '@vueuse/core';
 import { load } from 'recaptcha-v3';
 import axios from 'axios';
 import { reset } from '@formkit/core';
+import MoveTo from 'moveto'
 
 import useFormData from './useFormData';
 
@@ -24,6 +25,8 @@ export default function useFormHandler(cfg) {
       data.token = token;
 
       const csrfToken = document.head.querySelector('meta[name="csrf-token"]');
+
+      const moveTo = new MoveTo();
 
       return await axios({
         method: 'post',
@@ -47,11 +50,26 @@ export default function useFormHandler(cfg) {
 
             await nextTick();
 
+            setTimeout(() => {
+
+              let messageEl = document.querySelector('[data-form-message]')
+
+              if (messageEl) {
+
+                if (messageEl.closest('section')) {
+                  moveTo.move(messageEl.closest('section'))
+                } else {
+                  moveTo.move(messageEl, {tolerance: 100})
+                }
+              }
+
+            }, 500)
+
           } else {
             //
           }
         })
-        .catch((error) => {
+        .catch(async (error) => {
           if (error.response) {
             if (error.response.data instanceof Object) {
               for (const [key, value] of Object.entries(error.response.data)) {
@@ -61,9 +79,29 @@ export default function useFormHandler(cfg) {
                     [key]: value,
                   },
                 );
+
+                await nextTick();
+
+                let moveTarget = document.querySelector('[data-message-type="error"]')
+
+                if (moveTarget) {
+
+                  if (moveTarget.parentElement) {
+                    moveTarget = moveTarget.parentElement
+
+                    if (moveTarget.parentElement) {
+                      moveTarget = moveTarget.parentElement
+                    }
+                  }
+
+                  moveTo.move(moveTarget)
+                }
+
               }
             } else {
               node.setErrors([error.response.data]);
+
+              // todo moveTo
             }
           }
         });
