@@ -19,9 +19,9 @@ class ScrollMagic {
 
     add(elName, events, options = {}) {
 
-      let target = $('[data-sm="' + elName + '"]');
+      let target = document.querySelector('[data-sm="' + elName + '"]');
 
-      if (target.length) {
+      if (target) {
 
         let sceneOptions = {
           triggerElement: '[data-sm="'+elName+'"]'
