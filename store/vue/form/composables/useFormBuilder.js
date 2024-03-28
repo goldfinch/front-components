@@ -44,7 +44,9 @@ const useFormBuilder = (props) => {
         }
       }
 
-      moveTo.move(message)
+      await nextTick()
+
+      setTimeout(() => moveTo.move(message), 250)
     }
 
     // const validations = getValidationMessages(node)

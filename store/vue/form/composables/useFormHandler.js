@@ -63,7 +63,7 @@ export default function useFormHandler(cfg) {
                 }
               }
 
-            }, 500)
+            }, 250)
 
           } else {
             //
@@ -94,7 +94,7 @@ export default function useFormHandler(cfg) {
                     }
                   }
 
-                  moveTo.move(moveTarget)
+                  setTimeout(() => moveTo.move(moveTarget), 250)
                 }
 
               }
