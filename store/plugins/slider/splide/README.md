@@ -20,3 +20,11 @@ Splide.init('.splide', {
   }
 })
 ```
+
+## Important note (page speed insights)
+
+```
+Values assigned to role="" are not valid ARIA roles.
+```
+
+Do not build slider on <ul> or <li>, use <div> instead.
