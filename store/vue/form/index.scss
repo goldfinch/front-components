@@ -139,9 +139,7 @@
 
   &[data-type='file'] {
     &[data-multiple='true'] .formkit-file-remove {
-      left: calc(
-        var(--fk-padding-input-l) + (4em - var(--fk-font-size-remove))
-      );
+      left: calc(var(--fk-padding-input-l) + (4em - var(--fk-font-size-remove)));
     }
   }
 }

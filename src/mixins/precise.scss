@@ -3,7 +3,9 @@
 
   @if $precise-measurement-rem {
     $convertedValue: rem($value);
-  } @else {
+  }
+
+ @else {
     $convertedValue: $value;
   }
 
@@ -19,43 +21,43 @@
         @if index('font-size' 'line-height', $property) {
           $builtValue: append(
             $builtValue,
-            calc(
-              #{$v} * #{map-get($precise-breakpoint-size-rates, $breakpoint)}
-            ),
+            calc(#{$v} * #{map-get($precise-breakpoint-size-rates, $breakpoint)}),
             'space'
           );
-        } @else {
+        }
+
+ @else {
           @if $v != 0 {
             $builtValue: append(
               $builtValue,
-              calc(
-                #{$v} * #{map-get($precise-breakpoint-width-rates, $breakpoint)}
-              ),
+              calc(#{$v} * #{map-get($precise-breakpoint-width-rates, $breakpoint)}),
               'space'
             );
-          } @else {
+          }
+
+ @else {
             $builtValue: append($builtValue, #{$v}, 'space');
           }
         }
-      } @else {
+      }
+
+ @else {
         $builtValue: append($builtValue, #{$v}, 'space');
       }
     }
 
     #{$property}: $builtValue;
-  } @else {
+  }
+
+ @else {
     $convertedBreak: null;
 
     @if index('font-size' 'line-height', $property) {
-      #{$property}: calc(
-        #{$convertedValue} *
-          #{map-get($precise-breakpoint-size-rates, $breakpoint)}
-      );
-    } @else {
-      #{$property}: calc(
-        #{$convertedValue} *
-          #{map-get($precise-breakpoint-width-rates, $breakpoint)}
-      );
+      #{$property}: calc(#{$convertedValue} * #{map-get($precise-breakpoint-size-rates, $breakpoint)});
+    }
+
+ @else {
+      #{$property}: calc(#{$convertedValue} * #{map-get($precise-breakpoint-width-rates, $breakpoint)});
     }
   }
 }
@@ -70,7 +72,9 @@
         @each $p in $property {
           @if type-of($p) == 'string' {
             $preProperty: $p;
-          } @else {
+          }
+
+ @else {
             $preValue: $p;
           }
         }
@@ -90,7 +94,9 @@
 
         @if $isExclusion {
           #{$preProperty}: $isExclusion;
-        } @else {
+        }
+
+ @else {
           @include precise($preProperty, $preValue, $breakpoint);
         }
       }

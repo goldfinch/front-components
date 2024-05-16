@@ -92,8 +92,6 @@
 
 .pswp--click-to-zoom.pswp--zoom-allowed .pswp__img {
   cursor: zoom-in;
-  cursor: zoom-in;
-  cursor: zoom-in;
 }
 
 .pswp--click-to-zoom.pswp--zoomed-in .pswp__img {
@@ -105,16 +103,12 @@
 
 .pswp--click-to-zoom.pswp--zoomed-in .pswp__img:active {
   cursor: grabbing;
-  cursor: grabbing;
-  cursor: grabbing;
 }
 
 /* :active to override grabbing cursor */
 .pswp--no-mouse-drag.pswp--zoomed-in .pswp__img,
 .pswp--no-mouse-drag.pswp--zoomed-in .pswp__img:active,
 .pswp__img {
-  cursor: zoom-out;
-  cursor: zoom-out;
   cursor: zoom-out;
 }
 
@@ -123,9 +117,6 @@
 .pswp__img,
 .pswp__button,
 .pswp__counter {
-  user-select: none;
-  user-select: none;
-  user-select: none;
   user-select: none;
 }
 
@@ -178,8 +169,7 @@ and show (for example fade in) when PhotoSwipe is opened
   z-index: 10; /* always overlap slide content */
   pointer-events: none; /* hidden elements should not be clickable */
   opacity: 0.005;
-  transition: opacity var(--pswp-transition-duration)
-    cubic-bezier(0.4, 0, 0.22, 1);
+  transition: opacity var(--pswp-transition-duration) cubic-bezier(0.4, 0, 0.22, 1);
   will-change: opacity;
 }
 

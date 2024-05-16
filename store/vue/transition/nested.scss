@@ -5,6 +5,6 @@
 
 .nested-enter-from .inner,
 .nested-leave-to .inner {
-  transform: translateX(30px);
   opacity: 0;
+  transform: translateX(30px);
 }

@@ -1,31 +1,32 @@
 <script setup>
-import useFormBuilder from '../../composables/useFormBuilder';
-import { FormKitMessages } from '@formkit/vue';
+import { FormKitMessages } from '@formkit/vue'
 
-const props = defineProps(['supplies']);
-const builder = useFormBuilder(props);
+import useFormBuilder from '../../composables/useFormBuilder'
+
+const props = defineProps(['supplies'])
+const builder = useFormBuilder(props)
 
 // start custom
 
-const fieldHowOptions = props.supplies.parameters.how_options;
+const fieldHowOptions = props.supplies.parameters.how_options
 </script>
 <template>
   <Transition>
     <FormKit
       v-if="!builder.formSubmited.value"
-      :ref="builder.form"
       :id="builder.formId"
-      @submit="builder.submitHandler"
-      @submit-invalid="builder.submitInvalidHandler"
+      :ref="builder.form"
       type="form"
       :config="{ validationVisibility: 'submit' }"
       form-class="contact-form row"
       actions-class="col-12"
+      @submit="builder.submitHandler"
+      @submit-invalid="builder.submitInvalidHandler"
     >
       <FormKit
+        id="field-name"
         type="text"
         name="name"
-        id="field-name"
         validation="required"
         label="Name"
         outer-class="col-md-6"
@@ -33,9 +34,9 @@ const fieldHowOptions = props.supplies.parameters.how_options;
       />
 
       <FormKit
+        id="field-phone"
         type="text"
         name="phone"
-        id="field-phone"
         validation="required"
         label="Phone"
         outer-class="col-md-6"
@@ -43,9 +44,9 @@ const fieldHowOptions = props.supplies.parameters.how_options;
       />
 
       <FormKit
+        id="field-email"
         type="email"
         name="email"
-        id="field-email"
         validation="required|email"
         label="Email"
         outer-class="col-md-6"
@@ -54,9 +55,9 @@ const fieldHowOptions = props.supplies.parameters.how_options;
 
       <FormKit
         v-if="builder.formVisible.value"
+        id="field-how"
         type="dropdown"
         name="how"
-        id="field-how"
         validation="required"
         label="How did you find me?"
         placeholder="Select ..."
@@ -82,16 +83,16 @@ const fieldHowOptions = props.supplies.parameters.how_options;
           classes: {
             label: '$reset form-check-label',
             wrapper: '$reset icheck-primary icheck-inline pt-3',
-            input: '$reset form-check-input',
-          },
+            input: '$reset form-check-input'
+          }
         }"
         outer-class="col-12"
       />
 
       <FormKit
+        id="field-segment-id"
         type="hidden"
         name="segment_id"
-        id="field-segment-id"
         validation="required"
         label="Segment"
         outer-class="col-md-6"
@@ -103,7 +104,7 @@ const fieldHowOptions = props.supplies.parameters.how_options;
       </div>
     </FormKit>
     <div v-else>
-      <div v-html="builder.formMessage.value"></div>
+      <div v-html="builder.formMessage.value" />
     </div>
   </Transition>
 </template>

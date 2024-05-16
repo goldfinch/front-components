@@ -1,19 +1,19 @@
-import LazyLoad from 'vanilla-lazyload';
+import LazyLoad from 'vanilla-lazyload'
 
 class LazyLoading {
   constructor() {
-    this.init();
+    this.init()
   }
 
   init() {
     window.lazyLoadInstance = new LazyLoad({
       // Your custom settings go here
-    });
+    })
   }
 
   static loadElement(el) {
-    lazyLoadInstance.update();
+    lazyLoadInstance.update()
   }
 }
 
-export default LazyLoading;
+export default LazyLoading

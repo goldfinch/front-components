@@ -8,7 +8,7 @@ class VanillaLoading {
   init() {
     window.lazyLoadInstance = new LazyLoad({
       // Your custom settings go here
-    });
+    })
   }
 
   static loadElement(el) {

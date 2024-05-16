@@ -1,4 +1,3 @@
-
 ### Install
 
 ```bash
@@ -13,7 +12,7 @@ const sm = new ScrollMagic()
 // <div data-sm="welcome"></div>
 
 sm.add('welcome', {
-    enter: (e) => {}
+  enter: (e) => {}
 })
 
 // sm.add('welcome', {

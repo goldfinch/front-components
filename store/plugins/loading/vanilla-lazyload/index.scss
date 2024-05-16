@@ -7,10 +7,15 @@
     transform 1s ease;
   transform: scale(0.97);
 }
+
 .lazy.loaded {
   filter: blur(0);
   opacity: 1;
   transform: scale(1);
 }
-.lazy.entered {}
-.lazy.loading {}
+
+.lazy.entered {
+}
+
+.lazy.loading {
+}

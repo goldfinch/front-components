@@ -1,25 +1,22 @@
 // precise settings
 
-$precise-measurement-rem: false !default;;
-
+$precise-measurement-rem: false !default;
 $precise-breakpoint-width-rates: (
   xs: 0.5,
   sm: 0.6,
   md: 0.7,
   lg: 0.8,
   xl: 1,
-  xxl: 1,
+  xxl: 1
 ) !default;
-
 $precise-breakpoint-size-rates: (
   xs: 0.8,
   sm: 0.8,
   md: 0.9,
   lg: 0.9,
   xl: 1,
-  xxl: 1,
+  xxl: 1
 ) !default;
-
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -28,7 +25,6 @@ $grid-breakpoints: (
   xl: 1200px,
   xxl: 1400px
 ) !default;
-
 $container-max-widths: (
   sm: 540px,
   md: 720px,
@@ -42,7 +38,9 @@ $container-max-widths: (
 
   @if $precise-measurement-rem {
     $convertedValue: rem($value);
-  } @else {
+  }
+
+ @else {
     $convertedValue: $value;
   }
 
@@ -58,43 +56,43 @@ $container-max-widths: (
         @if index('font-size' 'line-height', $property) {
           $builtValue: append(
             $builtValue,
-            calc(
-              #{$v} * #{map-get($precise-breakpoint-size-rates, $breakpoint)}
-            ),
+            calc(#{$v} * #{map-get($precise-breakpoint-size-rates, $breakpoint)}),
             'space'
           );
-        } @else {
+        }
+
+ @else {
           @if $v != 0 {
             $builtValue: append(
               $builtValue,
-              calc(
-                #{$v} * #{map-get($precise-breakpoint-width-rates, $breakpoint)}
-              ),
+              calc(#{$v} * #{map-get($precise-breakpoint-width-rates, $breakpoint)}),
               'space'
             );
-          } @else {
+          }
+
+ @else {
             $builtValue: append($builtValue, #{$v}, 'space');
           }
         }
-      } @else {
+      }
+
+ @else {
         $builtValue: append($builtValue, #{$v}, 'space');
       }
     }
 
     #{$property}: $builtValue;
-  } @else {
+  }
+
+ @else {
     $convertedBreak: null;
 
     @if index('font-size' 'line-height', $property) {
-      #{$property}: calc(
-        #{$convertedValue} *
-          #{map-get($precise-breakpoint-size-rates, $breakpoint)}
-      );
-    } @else {
-      #{$property}: calc(
-        #{$convertedValue} *
-          #{map-get($precise-breakpoint-width-rates, $breakpoint)}
-      );
+      #{$property}: calc(#{$convertedValue} * #{map-get($precise-breakpoint-size-rates, $breakpoint)});
+    }
+
+ @else {
+      #{$property}: calc(#{$convertedValue} * #{map-get($precise-breakpoint-width-rates, $breakpoint)});
     }
   }
 }
@@ -109,7 +107,9 @@ $container-max-widths: (
         @each $p in $property {
           @if type-of($p) == 'string' {
             $preProperty: $p;
-          } @else {
+          }
+
+ @else {
             $preValue: $p;
           }
         }
@@ -129,7 +129,9 @@ $container-max-widths: (
 
         @if $isExclusion {
           #{$preProperty}: $isExclusion;
-        } @else {
+        }
+
+ @else {
           @include precise($preProperty, $preValue, $breakpoint);
         }
       }

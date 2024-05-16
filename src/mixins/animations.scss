@@ -40,45 +40,43 @@
 @mixin animation($animate...) {
   $max: length($animate);
   $animations: '';
+
   @for $i from 1 through $max {
     $animations: #{$animations + nth($animate, $i)};
+
     @if $i < $max {
       $animations: #{$animations + ', '};
     }
   }
 
   animation: $animations;
-  animation: $animations;
-  animation: $animations;
-  animation: $animations;
 }
 
 @mixin animationName($animationName) {
   animation-name: $animationName;
-  animation-name: $animationName;
 } // string
+
 @mixin animationDuration($animationDuration) {
   animation-duration: $animationDuration;
-  animation-duration: $animationDuration;
 } // num in ms or s
+
 @mixin animationDirection($animationDirection) {
   animation-direction: $animationDirection;
-  animation-direction: $animationDirection;
 } // 'normal', 'reverse', 'alternate', 'alternate-reverse'
+
 @mixin animationDelay($animationDelay) {
   animation-delay: $animationDelay;
-  animation-delay: $animationDelay;
 }
+
 @mixin animationIterationCount($animationIterationCount) {
   animation-iteration-count: $animationIterationCount;
-  animation-iteration-count: $animationIterationCount;
 } // num or 'infinite'
+
 @mixin animationTimingFunction($animationTimingFunction) {
   animation-timing-function: $animationTimingFunction;
-  animation-timing-function: $animationTimingFunction;
 } // bezier curve or 'linear'
+
 @mixin animationFillMode($animationFillMode) {
-  animation-fill-mode: $animationFillMode;
   animation-fill-mode: $animationFillMode;
 } // forwards or backwards or both
 
@@ -86,12 +84,15 @@
   @keyframes #{$animationName} {
     @content;
   }
+
   @keyframes #{$animationName} {
     @content;
   }
+
   @keyframes #{$animationName} {
     @content;
   }
+
   @keyframes #{$animationName} {
     @content;
   }

@@ -15,8 +15,8 @@ Splide.init('.splide', {
   arrows: false,
   breakpoints: {
     640: {
-      arrows: true,
-    },
+      arrows: true
+    }
   }
 })
 ```

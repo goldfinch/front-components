@@ -1,29 +1,24 @@
 import { gsap as g } from 'gsap'
 
 class GSAP {
+  timelineDefaults = {
+    defaults: {
+      ease: 'circ.easeInOut',
+      duration: 0.5,
+    },
+  }
 
-    timelineDefaults = {
-      defaults: {
-        ease: 'circ.easeInOut',
-        duration: .5
-      }
-    }
+  constructor() {}
 
-    constructor() {}
+  timeline(options = {}) {
+    Object.assign(options, this.timelineDefaults)
 
-    timeline(options = {}) {
+    return g.timeline(options)
+  }
 
-      Object.assign(options, this.timelineDefaults)
-
-      return g.timeline(options)
-    }
-
-    static init() {
-
-      return g
-
-    }
-
+  static init() {
+    return g
+  }
 }
 
 export default GSAP

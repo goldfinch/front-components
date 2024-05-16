@@ -1,7 +1,7 @@
 // Scrolls fix
 @mixin scroll-disappear {
-  -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
 
   scrollbar-width: none;
   scrollbar-color: transparetn;
@@ -10,7 +10,6 @@
   &::-webkit-scrollbar-thumb,
   &::-webkit-scrollbar-track {
     display: none;
-
     width: 0;
     height: 0;
     appearance: none;
@@ -22,11 +21,7 @@
   scroll-behavior: smooth;
 }
 
-@mixin scroll-style(
-  $size,
-  $foreground-color,
-  $background-color: mix($foreground-color, white, 50%)
-) {
+@mixin scroll-style($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
   // For Google Chrome
   ::-webkit-scrollbar {
     width: $size;

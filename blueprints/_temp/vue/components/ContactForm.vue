@@ -1,15 +1,16 @@
 <script setup>
-import { ref } from 'vue';
-import useFormHandler from '../../../../../vendor/goldfinch/front-components/src/vue/composables/useFormHandler';
-import { FormKitMessages } from '@formkit/vue';
-import { useElementVisibility } from '@vueuse/core';
+import { FormKitMessages } from '@formkit/vue'
+import { useElementVisibility } from '@vueuse/core'
+import { ref } from 'vue'
 
-const testMode = false;
+import useFormHandler from '../../../../../vendor/goldfinch/front-components/src/vue/composables/useFormHandler'
 
-const contactForm = ref(null);
-const formID = 'contactForm';
-const formSubmited = ref(false);
-const formMessage = ref(null);
+const testMode = false
+
+const contactForm = ref(null)
+const formID = 'contactForm'
+const formSubmited = ref(false)
+const formMessage = ref(null)
 
 const { submitHandler } = useFormHandler({
   action: 'contact',
@@ -18,7 +19,7 @@ const { submitHandler } = useFormHandler({
   id: formID,
   formSubmited: formSubmited,
   formMessage: formMessage,
-});
+})
 
 const fieldHowOptions = [
   { value: 1, label: 'Google / Search engine' },
@@ -27,10 +28,10 @@ const fieldHowOptions = [
   { value: 4, label: 'Word of mouth' },
   { value: 5, label: 'Recommended by a friend' },
   { value: 6, label: 'Other' },
-];
+]
 
 // PageSpeed Insights
-const contactFormVisible = useElementVisibility(contactForm);
+const contactFormVisible = useElementVisibility(contactForm)
 </script>
 <template>
   <Transition>
@@ -38,16 +39,16 @@ const contactFormVisible = useElementVisibility(contactForm);
       v-if="!formSubmited"
       id="contactForm"
       ref="contactForm"
-      @submit="submitHandler"
       type="form"
       :config="{ validationVisibility: 'submit' }"
       form-class="contact-form row"
       actions-class="col-12"
+      @submit="submitHandler"
     >
       <FormKit
+        id="field-name"
         type="text"
         name="name"
-        id="field-name"
         validation="required"
         label="Name"
         outer-class="col-md-6"
@@ -55,9 +56,9 @@ const contactFormVisible = useElementVisibility(contactForm);
       />
 
       <FormKit
+        id="field-phone"
         type="text"
         name="phone"
-        id="field-phone"
         validation="required"
         label="Phone"
         outer-class="col-md-6"
@@ -65,9 +66,9 @@ const contactFormVisible = useElementVisibility(contactForm);
       />
 
       <FormKit
+        id="field-email"
         type="email"
         name="email"
-        id="field-email"
         validation="required|email"
         label="Email"
         outer-class="col-md-6"
@@ -76,9 +77,9 @@ const contactFormVisible = useElementVisibility(contactForm);
 
       <FormKit
         v-if="contactFormVisible"
+        id="field-how"
         type="dropdown"
         name="how"
-        id="field-how"
         validation="required"
         label="How did you find me?"
         placeholder="Select ..."
@@ -104,8 +105,8 @@ const contactFormVisible = useElementVisibility(contactForm);
           classes: {
             label: '$reset form-check-label',
             wrapper: '$reset icheck-primary icheck-inline pt-3',
-            input: '$reset form-check-input',
-          },
+            input: '$reset form-check-input'
+          }
         }"
         outer-class="col-12"
       />
@@ -115,7 +116,7 @@ const contactFormVisible = useElementVisibility(contactForm);
       </div>
     </FormKit>
     <div v-else>
-      <div v-html="formMessage"></div>
+      <div v-html="formMessage" />
     </div>
   </Transition>
 </template>

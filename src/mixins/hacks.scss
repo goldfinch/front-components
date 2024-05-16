@@ -96,9 +96,6 @@
 
 @mixin hyphens() {
   hyphens: auto;
-  hyphens: auto;
-  hyphens: auto;
-  hyphens: auto;
 }
 
 @function get-direction($direction) {
@@ -106,38 +103,22 @@
     'left': 'to right',
     'right': 'to left',
     'bottom': 'to top',
-    'top': 'to bottom',
+    'top': 'to bottom'
   );
 
   @if map-has-key($direction-map, $direction) {
     @return map-get($direction-map, $direction);
   }
+
   @return $direction;
 }
 
-@mixin linear-gradient(
-  $direction: left,
-  $color-from: #000000,
-  $color-to: #ffffff,
-  $gradient-type: 0
-) {
-  background-image: linear-gradient(
-    $direction,
-    rgba($color-from, 0.6) 0%,
-    rgba($color-to, 0) 100%
-  );
-  background-image: linear-gradient(
-    $direction,
-    rgba($color-from, 0.6) 0%,
-    rgba($color-to, 0) 100%
-  );
-  background-image: linear-gradient(
-    get-direction($direction),
-    rgba($color-from, 0.6) 0%,
-    rgba($color-to, 0) 100%
-  );
+@mixin linear-gradient($direction: left, $color-from: #000000, $color-to: #ffffff, $gradient-type: 0) {
+  background-image: linear-gradient($direction, rgba($color-from, 0.6) 0%, rgba($color-to, 0) 100%);
+  background-image: linear-gradient(get-direction($direction), rgba($color-from, 0.6) 0%, rgba($color-to, 0) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=#{$gradient-type}, StartColorStr=#{$color-from}, EndColorStr=#{$color-to});
 }
+
 @mixin ellipsis($display: inline-block) {
   display: $display;
   max-width: 100%;
@@ -145,14 +126,16 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 @mixin object-fit-cover {
-  object-fit: cover;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 @function toRem($value) {
   $remValue: math.div($value, 16) + rem;
+
   @return $remValue;
 }
 
@@ -182,26 +165,33 @@
     @content;
   }
 }
+
 @mixin placeholder {
   @include optional-at-root('::-webkit-input-placeholder') {
     @content;
   }
+
   @include optional-at-root(':-moz-placeholder') {
     @content;
   }
+
   @include optional-at-root('::-moz-placeholder') {
     @content;
   }
+
   @include optional-at-root(':-ms-input-placeholder') {
     @content;
   }
+
   @include optional-at-root('::-ms-input-placeholder') {
     @content;
   }
+
   @include optional-at-root('::placeholder') {
     @content;
   }
 }
+
 @mixin placeholder {
   @include optional-at-root('::-webkit-input-placeholder') {
     @content;
@@ -240,6 +230,7 @@
 @mixin phones-fit {
   @supports (padding: max(0px)) {
     padding-right: env(safe-area-inset-right);
+
     ///* iOS 11 */
     //padding-left: constant(safe-area-inset-left);
     //padding-right: constant(safe-area-inset-right);
@@ -256,50 +247,32 @@
   }
 }
 
-@mixin ripple-effect(
-  $effect-first-color,
-  $effect-second-color,
-  $delay,
-  $function
-) {
+@mixin ripple-effect($effect-first-color, $effect-second-color, $delay, $function) {
   background-position: center;
-  transition: background $delay $function;
   transition: background $delay $function;
 
   &:hover {
     background: var(--ripple-effect-first-color, $effect-first-color)
-      radial-gradient(
-        circle,
-        transparent 1%,
-        var(--ripple-effect-second-color, $effect-second-color) 1%
-      )
-      center/15000%;
+      radial-gradient(circle, transparent 1%, var(--ripple-effect-second-color, $effect-second-color) 1%) center/15000%;
   }
 
   &:active {
     background-color: var(--ripple-effect-first-color, $effect-first-color);
     background-size: 100%;
     transition: background 0s;
-    transition: background 0s;
   }
 }
+
 @function strip-unit($value) {
   @return $value / ($value * 0 + 1);
 }
-@mixin ripple-effect-not-vars(
-  $effect-first-color,
-  $effect-second-color,
-  $delay,
-  $function
-) {
+
+@mixin ripple-effect-not-vars($effect-first-color, $effect-second-color, $delay, $function) {
   background-position: center;
-  transition: background $delay $function;
   transition: background $delay $function;
 
   &:hover {
-    background: $effect-first-color
-      radial-gradient(circle, transparent 1%, $effect-second-color 1%)
-      center/15000%;
+    background: $effect-first-color radial-gradient(circle, transparent 1%, $effect-second-color 1%) center/15000%;
   }
 
   &:active {

@@ -1,4 +1,3 @@
-
 @mixin safari {
   @media (resolution >= 0.001dpcm) {
     @supports (-webkit-appearance: none) and (stroke-color: transparent) {

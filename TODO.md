@@ -1,12 +1,11 @@
 Main form:
 vendor/goldfinch/front-components/blueprints/usable_templates/forms/ContactForm.vue
 
-
 npm install bootstrap @formkit/vue@next @vueuse/core axios vue-recaptcha-v3 @vitejs/plugin-vue @formkit/addons
 tom-select
 
-1)
-vite.config.js
+1.  vite.config.js
+
 ```
 import vue from '@vitejs/plugin-vue';
 
@@ -27,17 +26,17 @@ vue({
 }),
 ```
 
-2)
+2.
+
 ```
 <div app-contact-form></div>
 ```
 
-3)
+3.
+
 ```
 $Vite.CSS(themes/main/src/vue/vue.scss).RAW
 $Vite.JS(themes/main/src/vue/vue.js).RAW
 ```
 
-4) Add recaptcah keys
-
-
+4. Add recaptcah keys

@@ -25,7 +25,6 @@ new Move() // ! keep me at the very end
 
 <a href="javascript:void(0)" data-move-to="*" data-move-to-offset="500">Click</a>
 <a href="javascript:void(0)" data-move-to="*" data-move-to-offset=".header">Click</a>
-
 ```
 
 Url support (search elements in the following order: [data-mv="$element"], #$element, .$element)

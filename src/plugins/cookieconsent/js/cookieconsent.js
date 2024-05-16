@@ -1,9 +1,10 @@
-import { CookieConsent } from '@sandstreamdev/cookieconsent';
-import '@sandstreamdev/cookieconsent/build/cookieconsent.min.css';
+import { CookieConsent } from '@sandstreamdev/cookieconsent'
+
+import '@sandstreamdev/cookieconsent/build/cookieconsent.min.css'
 
 class CookieConsentHandler {
   constructor() {
-    this.init();
+    this.init()
   }
 
   init() {
@@ -42,7 +43,7 @@ class CookieConsentHandler {
       elements: {
         customize: '',
       },
-    });
+    })
 
     // cc.on('initialized', function () {
     //   const { consents } = cc;
@@ -95,4 +96,4 @@ class CookieConsentHandler {
   }
 }
 
-export default CookieConsentHandler;
+export default CookieConsentHandler

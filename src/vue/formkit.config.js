@@ -1,8 +1,7 @@
-import { generateClasses } from '@formkit/themes';
-import { createAutoAnimatePlugin } from '@formkit/addons';
-import { createInput } from '@formkit/vue';
-
-import DropdownField from '@/extra/js/vue/components/form/DropdownField.vue';
+import DropdownField from '@/extra/js/vue/components/form/DropdownField.vue'
+import { createAutoAnimatePlugin } from '@formkit/addons'
+import { generateClasses } from '@formkit/themes'
+import { createInput } from '@formkit/vue'
 
 /**
  * @formkit/themes/dist/tailwindcss/genesis/index.mjs
@@ -52,6 +51,6 @@ const config = {
       },
     }),
   },
-};
+}
 
-export default config;
+export default config

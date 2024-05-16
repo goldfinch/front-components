@@ -1,16 +1,16 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue';
-import TomSelect from 'tom-select';
+import TomSelect from 'tom-select'
+import { onMounted, ref, watch } from 'vue'
 
 const props = defineProps({
   context: Object,
-});
+})
 
-const tomSelectInstance = ref(null);
-const tomSelectRef = ref(null);
+const tomSelectInstance = ref(null)
+const tomSelectRef = ref(null)
 
 function handleChange(value) {
-  props.context.node.input(value);
+  props.context.node.input(value)
 }
 
 onMounted(() => {
@@ -19,7 +19,7 @@ onMounted(() => {
   tomSelectInstance.value = new TomSelect(tomSelectRef.value, {
     onInitialize: function () {
       if (!this.dropdown_content.hasAttribute('data-lenis-prevent')) {
-        this.dropdown_content.setAttribute('data-lenis-prevent', '');
+        this.dropdown_content.setAttribute('data-lenis-prevent', '')
       }
     },
     onChange: () => handleChange(tomSelectInstance.value.getValue()),
@@ -29,39 +29,40 @@ onMounted(() => {
     //   field: 'text',
     //   direction: 'asc'
     // }
-  });
-});
+  })
+})
 
 watch(
   () => props.context.disabled,
   (current, old) => {
     if (current) {
-      tomSelectInstance.value.disable();
-    } else {
-      tomSelectInstance.value.enable();
+      tomSelectInstance.value.disable()
+    }
+    else {
+      tomSelectInstance.value.enable()
     }
   },
-);
+)
 </script>
 
 <template>
   <select
-    ref="tomSelectRef"
     :id="context.id"
+    ref="tomSelectRef"
     :disabled="context.disabled"
     :value="context._value"
   >
     <option
+      v-if="context.attrs.placeholder"
       value=""
       v-text="context.attrs.placeholder"
-      v-if="context.attrs.placeholder"
-    ></option>
+    />
     <option
       v-for="option in context.attrs.options"
       :v-key="option.value"
       :value="option.value"
       v-text="option.label"
-    ></option>
+    />
   </select>
   <!--
       :model-value="context._value"

@@ -1,20 +1,15 @@
-import { Splide as SP } from '@splidejs/splide';
+import { Splide as SP } from '@splidejs/splide'
 
 class Splide {
+  constructor() {}
 
-    constructor() {}
+  static init(el, options) {
+    let target = document.querySelector(el)
 
-    static init(el, options) {
-
-      let target = document.querySelector(el);
-
-      if (target) {
-
-        return new SP(el, options).mount()
-      }
-
+    if (target) {
+      return new SP(el, options).mount()
     }
-
+  }
 }
 
 export default Splide

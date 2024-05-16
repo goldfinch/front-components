@@ -3,10 +3,10 @@ html {
 }
 
 body {
+  font-family: $font-primary;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-  font-family: $font-primary;
 }
 
 body.active {
